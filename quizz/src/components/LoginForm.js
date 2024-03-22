@@ -1,24 +1,22 @@
-// React
+// React modules
 import React, { useState } from "react";
 
-function LoginForm({ setLoggedIn }) {
+const LoginForm = ({ login }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleChangeUsername = (event) => {
-    event.preventDefault();
-
     setUsername(event.target.value);
   };
 
   const handleChangePassword = (event) => {
-    event.preventDefault();
-
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    setLoggedIn(true);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    login(username);
   };
 
   return (
@@ -47,6 +45,6 @@ function LoginForm({ setLoggedIn }) {
       </form>
     </div>
   );
-}
+};
 
 export default LoginForm;

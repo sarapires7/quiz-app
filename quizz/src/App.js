@@ -1,4 +1,4 @@
-// React
+// React Modules
 import React, { useState, useEffect } from "react";
 
 // Components
@@ -7,13 +7,17 @@ import LoginForm from "./components/LoginForm";
 // Fake Data
 import QuizzesList from "./fake-data/quizzes.json";
 
+// Custom Hooks
+import useAuth from "./hooks/Auth";
+
 // Styles
 import "./App.css";
 
 function App() {
+  const { loggedIn, login, logout } = useAuth();
+
   const [currentQuizz, setCurrentQuizz] = useState({});
   const [awsersList, setAwsersList] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const quizzes = QuizzesList;
@@ -23,18 +27,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Quizz</h1>
         {loggedIn ? (
           // Quizz component
           <>
-            <p>show quizz</p>
-            <button type="button" onClick={() => setLoggedIn(false)}>
+            <h1>Quizz</h1>
+            <button type="button" onClick={logout}>
               Logout
             </button>
           </>
         ) : (
           // Login form component
-          <LoginForm setLoggedIn={setLoggedIn} />
+          <LoginForm login={login} />
         )}
       </header>
     </div>
