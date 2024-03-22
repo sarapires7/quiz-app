@@ -1,0 +1,36 @@
+[
+  {
+    "id": "week1",
+    "name": "Week 1",
+    "active": false,
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How many trainings did you do this year?",
+        "options": ["from 4 to 6", "from 1 to 3", "7 or more", "none"]
+      },
+      {
+        "id": "q2",
+        "question": "How satisfied are you in your role?",
+        "options": ["very satisfied", "satisfied", "dissatisfied", "very dissatisfied"]
+      }
+    ]
+  },
+  {
+    "id": "week2",
+    "name": "Week 2",
+    "active": true,
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How many trainings did you do this year?",
+        "options": ["from 4 to 6", "from 1 to 3", "7 or more", "none"]
+      },
+      {
+        "id": "q2",
+        "question": "How satisfied are you in your role?",
+        "options": ["very satisfied", "satisfied", "dissatisfied", "very dissatisfied"]
+      }
+    ]
+  }
+]

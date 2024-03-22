@@ -1,0 +1,22 @@
+[
+  {
+    "id": "admin",
+    "name": "Admin"
+  },
+  {
+    "id": "1",
+    "name": "Employee X"
+  },
+  {
+    "id": "2",
+    "name": "Employee Y"
+  },
+  {
+    "id": "3",
+    "name": "Employee Z"
+  },
+  {
+    "id": "4",
+    "name": "Employee K"
+  }
+]
