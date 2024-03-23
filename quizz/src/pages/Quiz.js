@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Question from "../components/Question";
 import DotList from "../components/DotList";
 
-const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
+const Quiz = ({ currentQuiz, quizSubmitted, setQuizSubmitted }) => {
   const [answers, setAnswers] = useState({});
 
   const handleAnswers = (questionId, answer) => {
@@ -16,34 +16,34 @@ const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
   };
 
   const handleSubmit = () => {
-    const allQuestionsAnswered = currentQuizz.questions.every((question) =>
+    const allQuestionsAnswered = currentQuiz.questions.every((question) =>
       answers.hasOwnProperty(question.id)
     );
 
     if (allQuestionsAnswered) {
-      setQuizzSubmitted(true);
+      setQuizSubmitted(true);
     } else {
       alert("Please answer all questions before submitting.");
     }
   };
 
   useEffect(() => {
-    if (!quizzSubmitted) {
+    if (!quizSubmitted) {
       setAnswers({});
     }
-  }, [quizzSubmitted]);
+  }, [quizSubmitted]);
 
   return (
-    <div id="quizz">
-      <h2>Quizz - {currentQuizz.name}</h2>
-      <p>{currentQuizz.description}</p>
+    <div id="quiz">
+      <h2>Quiz - {currentQuiz.name}</h2>
+      <p>{currentQuiz.description}</p>
       <hr />
-      {!quizzSubmitted ? (
+      {!quizSubmitted ? (
         <div className="questions">
           <h4>Please answer the following questions:</h4>
 
           {/* Question component */}
-          {currentQuizz.questions.map((question) => (
+          {currentQuiz.questions.map((question) => (
             <Question question={question} handleAnswers={handleAnswers} />
           ))}
 
@@ -51,12 +51,12 @@ const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
         </div>
       ) : (
         <div className="answer-list">
-          <h3 style={{ color: "red" }}>Quizz submitted successfully!</h3>
+          <h3 style={{ color: "red" }}>Quiz submitted successfully!</h3>
           <h3>Review your answers:</h3>
 
           {/* Dot list component */}
           <ul>
-            {currentQuizz.questions.map((question) => (
+            {currentQuiz.questions.map((question) => (
               <DotList
                 id={question.id}
                 title={question.question}
@@ -71,4 +71,4 @@ const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
   );
 };
 
-export default Quizz;
+export default Quiz;

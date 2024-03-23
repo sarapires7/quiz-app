@@ -4,7 +4,7 @@ import Employees from "../fake-data/user.json";
 const useAuth = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [employeeUsername, setEmployeeUsername] = useState("");
-  const [quizzSubmitted, setQuizzSubmitted] = useState(false);
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
 
   const login = (username) => {
     const employees = Employees;
@@ -21,7 +21,7 @@ const useAuth = () => {
   const logout = () => {
     setLoggedIn(false);
     setEmployeeUsername("");
-    setQuizzSubmitted(false);
+    setQuizSubmitted(false);
   };
 
   return {
@@ -29,8 +29,8 @@ const useAuth = () => {
     employeeUsername,
     login,
     logout,
-    quizzSubmitted,
-    setQuizzSubmitted,
+    quizSubmitted,
+    setQuizSubmitted,
   };
 };
 

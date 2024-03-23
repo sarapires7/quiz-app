@@ -5,8 +5,8 @@ import React, { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
 
 // Pages
-import Quizz from "./pages/Quizz";
-import AdminQuizz from "./pages/AdminQuizz";
+import Quiz from "./pages/Quiz";
+import AdminQuiz from "./pages/AdminQuiz";
 
 // Fake Data
 import QuizzesList from "./fake-data/quizzes.json";
@@ -24,32 +24,32 @@ function App() {
     employeeUsername,
     login,
     logout,
-    quizzSubmitted,
-    setQuizzSubmitted,
+    quizSubmitted,
+    setQuizSubmitted,
   } = useAuth();
 
-  const [currentQuizz, setCurrentQuizz] = useState({});
+  const [currentQuiz, setCurrentQuiz] = useState({});
 
   useEffect(() => {
-    let activeQuizz = quizzes.filter((quizz) => quizz.active === true);
-    setCurrentQuizz(activeQuizz[0]);
+    let activeQuiz = quizzes.filter((quiz) => quiz.active === true);
+    setCurrentQuiz(activeQuiz[0]);
   }, [quizzes]);
 
   return (
     <div className="App">
       <header className="App-header">
         {loggedIn ? (
-          // Quizz component
+          // Quiz component
           <>
             <h1>Welcome {employeeUsername}</h1>
             {employeeUsername !== "admin" ? (
-              <Quizz
-                currentQuizz={currentQuizz}
-                quizzSubmitted={quizzSubmitted}
-                setQuizzSubmitted={setQuizzSubmitted}
+              <Quiz
+                currentQuiz={currentQuiz}
+                quizSubmitted={quizSubmitted}
+                setQuizSubmitted={setQuizSubmitted}
               />
             ) : (
-              <AdminQuizz />
+              <AdminQuiz />
             )}
 
             <button type="button" onClick={logout}>
