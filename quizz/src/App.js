@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 // Components
 import LoginForm from "./components/LoginForm";
+import Quizz from "./components/Quizz";
 
 // Fake Data
 import QuizzesList from "./fake-data/quizzes.json";
@@ -17,11 +18,11 @@ function App() {
   const { loggedIn, login, logout } = useAuth();
 
   const [currentQuizz, setCurrentQuizz] = useState({});
-  const [awsersList, setAwsersList] = useState([]);
 
   useEffect(() => {
     const quizzes = QuizzesList;
-    setCurrentQuizz(quizzes.filter((quizz) => quizz.active));
+    let activeQuizz = quizzes.filter((quizz) => quizz.active === true);
+    setCurrentQuizz(activeQuizz[0]);
   }, []);
 
   return (
@@ -31,6 +32,7 @@ function App() {
           // Quizz component
           <>
             <h1>Quizz</h1>
+            <Quizz currentQuizz={currentQuizz} />
             <button type="button" onClick={logout}>
               Logout
             </button>
