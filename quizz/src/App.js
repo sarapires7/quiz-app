@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 // Components
 import LoginForm from "./components/LoginForm";
-import Quizz from "./components/Quizz";
+import Quizz from "./pages/Quizz";
 
 // Fake Data
 import QuizzesList from "./fake-data/quizzes.json";
@@ -15,7 +15,8 @@ import useAuth from "./hooks/Auth";
 import "./App.css";
 
 function App() {
-  const { loggedIn, login, logout } = useAuth();
+  const { loggedIn, login, logout, quizzSubmitted, setQuizzSubmitted } =
+    useAuth();
 
   const [currentQuizz, setCurrentQuizz] = useState({});
 
@@ -32,7 +33,11 @@ function App() {
           // Quizz component
           <>
             <h1>Quizz</h1>
-            <Quizz currentQuizz={currentQuizz} />
+            <Quizz
+              currentQuizz={currentQuizz}
+              quizzSubmitted={quizzSubmitted}
+              setQuizzSubmitted={setQuizzSubmitted}
+            />
             <button type="button" onClick={logout}>
               Logout
             </button>
