@@ -1,22 +1,27 @@
 [
   {
-    "id": "admin",
-    "name": "Admin"
+    "id": 1,
+    "name": "Admin",
+    "username": "admin"
   },
   {
-    "id": "1",
-    "name": "Employee X"
+    "id": 2,
+    "name": "Sara",
+    "username": "sara"
   },
   {
-    "id": "2",
-    "name": "Employee Y"
+    "id": 3,
+    "name": "Employee Y",
+    "username": "employeeY"
   },
   {
-    "id": "3",
-    "name": "Employee Z"
+    "id": 4,
+    "name": "Employee Z",
+    "username": "employeeZ"
   },
   {
-    "id": "4",
-    "name": "Employee K"
+    "id": 5,
+    "name": "Employee K",
+    "username": "employeeK"
   }
 ]

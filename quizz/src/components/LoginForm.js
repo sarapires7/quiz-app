@@ -1,4 +1,3 @@
-// React modules
 import React, { useState } from "react";
 
 const LoginForm = ({ login }) => {
