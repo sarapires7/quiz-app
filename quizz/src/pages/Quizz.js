@@ -1,9 +1,12 @@
-import { useState } from "react";
+// React Modules
+import { useState, useEffect } from "react";
+
+// Components
 import Question from "../components/Question";
 import DotList from "../components/DotList";
 
 const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState({});
 
   const handleAnswers = (questionId, answer) => {
     setAnswers((prevAnswers) => ({
@@ -24,9 +27,15 @@ const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
     }
   };
 
+  useEffect(() => {
+    if (!quizzSubmitted) {
+      setAnswers({});
+    }
+  }, [quizzSubmitted]);
+
   return (
     <div id="quizz">
-      <h2>{currentQuizz.name}</h2>
+      <h2>Quizz - {currentQuizz.name}</h2>
       <p>{currentQuizz.description}</p>
       <hr />
       {!quizzSubmitted ? (
@@ -46,7 +55,15 @@ const Quizz = ({ currentQuizz, quizzSubmitted, setQuizzSubmitted }) => {
           <h3>Review your answers:</h3>
 
           {/* Dot list component */}
-          <DotList list={currentQuizz.questions} result={answers} />
+          <ul>
+            {currentQuizz.questions.map((question) => (
+              <DotList
+                id={question.id}
+                title={question.question}
+                result={answers}
+              />
+            ))}
+          </ul>
         </div>
       )}
       <hr />

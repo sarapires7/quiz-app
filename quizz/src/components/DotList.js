@@ -1,15 +1,11 @@
 import React from "react";
 
-const DotList = ({ list, result }) => {
+const DotList = ({ id, title, result }) => {
   return (
-    <ul>
-      {list.map((item) => (
-        <li key={item.id}>
-          <b>{item.question} </b>
-          <p>- {result[item.id]}</p>
-        </li>
-      ))}
-    </ul>
+    <li key={id}>
+      <b>{title} </b>
+      {result && <p>- {result[id]}</p>}
+    </li>
   );
 };
 
