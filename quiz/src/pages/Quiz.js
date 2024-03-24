@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // Components
 import Question from "../components/Question";
-import DotList from "../components/DotList";
+import Resume from "../components/Resume";
 
 const Quiz = ({ currentQuiz, quizSubmitted, setQuizSubmitted }) => {
   const [answers, setAnswers] = useState({});
@@ -41,8 +41,6 @@ const Quiz = ({ currentQuiz, quizSubmitted, setQuizSubmitted }) => {
       {!quizSubmitted ? (
         <div className="questions">
           <h4>Please answer the following questions:</h4>
-
-          {/* Question component */}
           {currentQuiz.questions.map((question) => (
             <Question question={question} handleAnswers={handleAnswers} />
           ))}
@@ -50,21 +48,7 @@ const Quiz = ({ currentQuiz, quizSubmitted, setQuizSubmitted }) => {
           <button onClick={handleSubmit}>Submit</button>
         </div>
       ) : (
-        <div className="answer-list">
-          <h3 style={{ color: "red" }}>Quiz submitted successfully!</h3>
-          <h3>Review your answers:</h3>
-
-          {/* Dot list component */}
-          <ul>
-            {currentQuiz.questions.map((question) => (
-              <DotList
-                id={question.id}
-                title={question.question}
-                result={answers}
-              />
-            ))}
-          </ul>
-        </div>
+        <Resume questions={currentQuiz.questions} answers={answers} />
       )}
       <hr />
     </div>
